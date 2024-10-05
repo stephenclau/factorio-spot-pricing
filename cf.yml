@@ -1,11 +1,11 @@
-AWSTemplateFormatVersion: "2010-09-09"
+AWSTemplateFormatVersion: "2024-04-10"
 Description: Factorio Spot Price Server via Docker / ECS
 Parameters:
 
   ECSAMI:
     Description: AWS ECS AMI ID
     Type: AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>
-    Default: /aws/service/ecs/optimized-ami/amazon-linux-2/recommended/image_id
+    Default: /aws/service/canonical/ubuntu/server/jammy/stable/current/amd64/hvm/ebs-gp2/ami-id
 
   FactorioImageTag:
     Type: String
@@ -23,8 +23,14 @@ Parameters:
   InstanceType:
     Type: String
     Description: "m3.medium is a good cost effective (albeit older) instance, 1 VCPU and 3.75 GB of RAM with moderate network performance. Change at your discretion. https://aws.amazon.com/ec2/instance-types/."
-    Default: m3.medium
-
+    Default: M8g.medium
+    AllowedValues:
+        - M7g.medium
+        - M7g.large
+        - M6i.large
+        - M5.large
+        - M7i.large
+        
   SpotPrice:
     Type: String
     Description: "An m3.medium shouldn't cost more than a cent per hour. Note: Leave this blank to use on-demand pricing."
@@ -33,7 +39,7 @@ Parameters:
   KeyPairName:
     Type: String
     Description: (Optional - An empty value disables this feature)
-    Default: ''
+    Default: slaukey
 
   YourIp:
     Type: String
@@ -43,7 +49,7 @@ Parameters:
   HostedZoneId:
     Type: String
     Description: (Optional - An empty value disables this feature) If you have a hosted zone in Route 53 and wish to set a DNS record whenever your Factorio instance starts, supply the hosted zone ID here.
-    Default: ''
+    Default: Z0530667BKHR8VWV6EC1
 
   RecordName:
     Type: String
@@ -61,7 +67,7 @@ Parameters:
   UpdateModsOnStart:
     Type: String
     Description: Refer to https://hub.docker.com/r/factoriotools/factorio/ for further configuration details.
-    Default: false
+    Default: true
     AllowedValues:
     - true
     - false

@@ -31,12 +31,12 @@ Parameters:
   InstanceType:
     Type: String
     Description: "Spot: You should leave this blank to get the best value instance. Override at your discretion: https://aws.amazon.com/ec2/instance-types/. On Demand: You must specify this. "
-    Default: ""
+    Default: "t3.medium"
 
   SpotPrice:
     Type: String
     Description: "Spot: the max cents/hr to pay for spot instance. On Demand: Ignored"
-    Default: "0.05"
+    Default: "0.02"
 
   SpotMinMemoryMiB:
     Type: Number
@@ -51,7 +51,7 @@ Parameters:
   KeyPairName:
     Type: String
     Description: (Optional - An empty value disables this feature)
-    Default: ''
+    Default: slaukey
 
   YourIp:
     Type: String
@@ -61,12 +61,12 @@ Parameters:
   HostedZoneId:
     Type: String
     Description: (Optional - An empty value disables this feature) If you have a hosted zone in Route 53 and wish to set a DNS record whenever your Factorio instance starts, supply the hosted zone ID here.
-    Default: ''
+    Default: Z0530667BKHR8VWV6EC1
 
   RecordName:
     Type: String
     Description: (Optional - An empty value disables this feature) If you have a hosted zone in Route 53 and wish to set a DNS record whenever your Factorio instance starts, supply the name of the record here (e.g. factorio.mydomain.com).
-    Default: ''
+    Default: factorio.sakamoto.gg
 
   EnableRcon:
     Type: String
@@ -103,6 +103,7 @@ Metadata:
         - ServerState
         - EnableRcon
         - UpdateModsOnStart
+        ###- SaveGame
       - Label:
           default: Instance Configuration
         Parameters:
@@ -142,6 +143,8 @@ Metadata:
         default: "Do you wish to enable RCON?"
       UpdateModsOnStart:
         default: "Do you wish to update your mods on container start"
+      ##SaveGame:
+        ##default: "Enter save game name without .zip"
 Conditions:
   KeyPairNameProvided: !Not [ !Equals [ !Ref KeyPairName, '' ] ]
   IpAddressProvided: !Not [ !Equals [ !Ref YourIp, '' ] ]

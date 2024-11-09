@@ -420,6 +420,8 @@ Resources:
             Value: !Sub "${UpdateModsOnStart}"
           - Name: DLC_SPACE_AGE
             Value: !Sub "${DlcSpaceAge}"
+          - Name: SAVE_NAME
+            Value: SA_RW_vanilla
 
   # ====================================================
   # SET DNS RECORD

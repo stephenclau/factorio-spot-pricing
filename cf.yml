@@ -92,6 +92,12 @@ Parameters:
     - true
     - false
 
+  SaveGame:
+    Type: String
+    Description: Enter name of saved game (excluding .zip suffix)
+    Default: SA_RW_vanilla
+    
+
 Metadata:
   AWS::CloudFormation::Interface:
     ParameterGroups:
@@ -103,7 +109,7 @@ Metadata:
         - ServerState
         - EnableRcon
         - UpdateModsOnStart
-        ###- SaveGame
+        - SaveGame
       - Label:
           default: Instance Configuration
         Parameters:
@@ -143,8 +149,8 @@ Metadata:
         default: "Do you wish to enable RCON?"
       UpdateModsOnStart:
         default: "Do you wish to update your mods on container start"
-      ##SaveGame:
-        ##default: "Enter save game name without .zip"
+      SaveGame:
+        default: "Enter save game name without .zip"
 Conditions:
   KeyPairNameProvided: !Not [ !Equals [ !Ref KeyPairName, '' ] ]
   IpAddressProvided: !Not [ !Equals [ !Ref YourIp, '' ] ]
@@ -424,7 +430,7 @@ Resources:
           - Name: DLC_SPACE_AGE
             Value: !Sub "${DlcSpaceAge}"
           - Name: SAVE_NAME
-            Value: SA_RW_vanilla
+            Value: !Sub "${SaveGame}"
 
   # ====================================================
   # SET DNS RECORD

@@ -406,7 +406,7 @@ Resources:
       ContainerDefinitions:
         - Name: factorio
           MemoryReservation: 1024
-          Image: !Sub "factoriotools/factorio:${FactorioImageTag}"
+          Image: !Sub "stephenclau/factorio:${FactorioImageTag}"
           PortMappings:
           - ContainerPort: 34197
             HostPort: 34197

@@ -26,7 +26,7 @@ A few notes on the services we're using...
 
 ## Getting Started
 
-[![Launch Stack](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=factorio&templateURL=https://s3.amazonaws.com/factorio-spot-pricing/cf.yml)
+[![Launch Stack](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=factorio&templateURL=https://s3.us-west-1.amazonaws.com/norcal.s3.stephenclau.info/cf.yml)
 
 1. Click the above link, you'll need to log into your AWS account if you haven't already.
 2. Ensure you've selected a suitable AWS Region (closest to you) via the selector at the top right.
